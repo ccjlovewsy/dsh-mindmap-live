@@ -76,4 +76,14 @@ fi
 
 echo "=== Compiling src → lib ==="
 "$TSC" -p tsconfig.json
+
+# client 运行时加载的是 tsdown 闭包产物 lib/client.js（package.json exports./client），
+# tsc 只产散文件；少了这一步 client 改动不会生效。
+TSDOWN="$CHECKOUT/node_modules/.bin/tsdown"
+if [ -x "$TSDOWN" ]; then
+  echo "=== Bundling client → lib/client.js ==="
+  "$TSDOWN"
+else
+  echo "build: tsdown not found at $TSDOWN (client bundle skipped)" >&2
+fi
 echo "=== Build complete ==="

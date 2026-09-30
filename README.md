@@ -49,12 +49,16 @@ curl -s -X POST $B/op -H 'Content-Type: application/json' \
 curl -s -N --max-time 2 $B/events                  # SSE 首帧：data: {"version":N}
 ```
 
-## schema DSL 两个坑（本插件踩过）
+## 本插件踩过的坑
 
 1. **value schema（output 及 parameters 的嵌套层）禁用 `required`** —— 只允许出现在
    parameters 根属性上；output 里写 `required: true`（无论对象级还是属性级）都会在
    loader 装配期报 `schema.required is not supported by the value schema DSL`。
 2. **object 节点必须显式 `additionalProperties: boolean`**（开放性强制声明）。
+3. **host/client 同 tsconfig 时 cordis `Context.sessions` 类型被 host 侧占据** ——
+   core/session 的合并（SessionStore）盖住 client 运行时合并（ISessions），client 代码
+   直接用 `ctx.sessions` 会报 `Property 'binding' does not exist`；在入口边界处
+   `(ctx as unknown as { sessions: ISessions })` 还原一次即可（运行时行为不受影响）。
 
 另：装配失败重试前若改过代码，须先清宿主 loader 的模块缓存（`loader.internal.loadCache`），
 否则 `loader.create` 会复用旧模块实例——失败现象与代码错误完全相同但文件已是新的。

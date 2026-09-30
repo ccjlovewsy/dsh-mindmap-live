@@ -24,7 +24,7 @@
   },
   "scripts": {
     "build": "bash scripts/build.sh",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "typecheck": "bash scripts/typecheck.sh",
     "build:client": "tsdown"
   },
   "exports": {
