@@ -278,7 +278,7 @@ export function MindmapCanvas(_props: ConvViewProps): React.ReactElement {
       <div className="mml-bar">
         <span className={'mml-dot ' + (live ? 'mml-dot-on' : 'mml-dot-off')} title={live ? 'SSE 已连接（即时同步）' : 'SSE 断开，轮询兜底中'} />
         <span className="mml-ver">{'v' + String(state.version)}</span>
-        <button className="mml-btn" onClick={() => setFullscreen(!fullscreen)}>{fullscreen ? '⤡ 停靠' : '⛶ 全屏'}</button>
+        <button className="mml-btn" onClick={() => setFullscreen(!fullscreen)}>{fullscreen ? '⤡ 缩放' : '⛶ 全屏'}</button>
         <button className="mml-btn" title="把根节点滚回视野中央" onClick={() => { centeredRef.current = true; centerOnRoot() }}>⌖ 根</button>
         <button className="mml-btn" disabled={!selected} onClick={() => { if (selected) void ops([{ op: 'addNode', parentId: selected, title: '新节点' }]) }}>＋子节点</button>
         <button className="mml-btn" onClick={() => { void addSibling() }}>＋同级</button>
