@@ -1,0 +1,14 @@
+src/client/MindmapCanvas.tsx
+  h_549ca815bd0c5c 281
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "5.30.1",
+  "base_commit_sha": "ba5f1ac3465befb40ff4e6e706ec10db8a18d8c2",
+  "prompts": {},
+  "humans": {
+    "h_549ca815bd0c5c": {
+      "author": "dev <2747477431@qq.com>"
+    }
+  }
+}
