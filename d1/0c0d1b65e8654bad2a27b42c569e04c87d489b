@@ -1,0 +1,14 @@
+.agentdoc/260929-画布提问直达会话回答-需求拆解.md
+  h_549ca815bd0c5c 1-113
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "5.30.1",
+  "base_commit_sha": "d10c0d1b65e8654bad2a27b42c569e04c87d489b",
+  "prompts": {},
+  "humans": {
+    "h_549ca815bd0c5c": {
+      "author": "dev <2747477431@qq.com>"
+    }
+  }
+}
