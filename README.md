@@ -59,6 +59,10 @@ curl -s -N --max-time 2 $B/events                  # SSE 首帧：data: {"versio
    core/session 的合并（SessionStore）盖住 client 运行时合并（ISessions），client 代码
    直接用 `ctx.sessions` 会报 `Property 'binding' does not exist`；在入口边界处
    `(ctx as unknown as { sessions: ISessions })` 还原一次即可（运行时行为不受影响）。
+4. **作为 profile bundle 必须声明 `dsh.bundle`** —— 缺 `dsh.bundle.patch` 及对应
+   `cordis.patch.yml` 时，`dsh web` 启动在 app-boot `profile.ts` 的 `loadProfile`
+   抛 `declares no dsh.bundle in its package.json`；patch 文件还须列入
+   package.json 的 `files`，否则 tgz 包里缺文件同样起不来。
 
 另：装配失败重试前若改过代码，须先清宿主 loader 的模块缓存（`loader.internal.loadCache`），
 否则 `loader.create` 会复用旧模块实例——失败现象与代码错误完全相同但文件已是新的。

@@ -1,0 +1,5 @@
+# dsh-mindmap-live bundle 层：挂载实时思维导图插件（host 侧状态 + 工具 + HTTP/SSE 通道）。
+- insert:
+    - id: dsh-mindmap-live
+      name: '@dsh-external/dsh-mindmap-live'
+      config: {}
